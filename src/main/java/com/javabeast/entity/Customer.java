@@ -3,8 +3,6 @@ package com.javabeast.entity;
 import lombok.*;
 
 import javax.persistence.*;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -25,12 +23,8 @@ public class Customer {
     private long id;
 
     @NotNull
-    @Min(3)
-    @Max(255)
     private String firstName;
 
     @NotNull
-    @Min(3)
-    @Max(255)
     private String lastName;
 }
