@@ -3,10 +3,12 @@ package com.javabeast.controllers;
 import com.javabeast.dao.CustomerRepository;
 import com.javabeast.entity.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -25,9 +27,13 @@ public class CustomerController {
         this.customerRepository = customerRepository;
     }
 
-
     @RequestMapping(value = "", method = RequestMethod.GET)
     public List<Customer> list() {
         return customerRepository.findAll();
+    }
+
+    @RequestMapping(value = "", method = RequestMethod.POST)
+    public Customer saveOrUpdate(@RequestBody @Valid final Customer customer) {
+        return customerRepository.save(customer);
     }
 }
