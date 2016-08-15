@@ -1,15 +1,20 @@
 package com.javabeast.dao;
 
 import com.javabeast.entity.Customer;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
+import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by jeffreya on 15/08/2016.
  */
-public interface CustomerRepository extends CrudRepository<Customer, Long> {
+@Transactional
+public interface CustomerRepository extends JpaRepository<Customer, Long> {
 
-    List<Customer> findByLastName(final String lastName);
+    default List<Customer> findByLastName(final String lastName) {
+        return new ArrayList<>();
+    }
 
 }
