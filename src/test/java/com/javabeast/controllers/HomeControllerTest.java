@@ -26,7 +26,7 @@ public class HomeControllerTest {
 
     @Before
     public void setUp() throws Exception {
-        mvc = MockMvcBuilders.standaloneSetup(new HomeController()).build();
+        mvc = MockMvcBuilders.standaloneSetup(new HomeController(null)).build();
     }
 
     @Test
