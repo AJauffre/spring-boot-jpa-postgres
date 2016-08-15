@@ -3,6 +3,9 @@ package com.javabeast.controllers;
 import com.javabeast.dao.CustomerRepository;
 import com.javabeast.entity.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -28,12 +31,12 @@ public class CustomerController {
     }
 
     @RequestMapping(value = "", method = RequestMethod.GET)
-    public List<Customer> list() {
-        return customerRepository.findAll();
+    public HttpEntity<List<Customer>> list() {
+        return ResponseEntity.ok(customerRepository.findAll());
     }
 
     @RequestMapping(value = "", method = RequestMethod.POST)
-    public Customer saveOrUpdate(@RequestBody @Valid final Customer customer) {
-        return customerRepository.save(customer);
+    public HttpEntity<Customer> saveOrUpdate(@RequestBody @Valid final Customer customer) {
+        return ResponseEntity.ok(customerRepository.save(customer));
     }
 }
