@@ -2,10 +2,7 @@ package com.javabeast.entity;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by jeffreya on 15/08/2016.
@@ -19,8 +16,9 @@ import javax.persistence.Id;
 @ToString
 public class Customer {
 
+
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String firstName;
     private String lastName;
